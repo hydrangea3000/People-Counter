@@ -53,10 +53,12 @@ def run_yolo(video_dir, model_weights, mask_dir):
     width = int(cap.get(cv.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv.CAP_PROP_FRAME_HEIGHT))
     size = (width, height)
+#     print('SIZE:',size)
     
     #  add VideoWriter for output video
     output_dir = video_dir[:-4] +'_output.mp4'
-    out = cv.VideoWriter(output_dir, -1, 20.0, size)
+    fourcc = cv.VideoWriter_fourcc(*'MP4V')
+    out = cv.VideoWriter(output_dir, fourcc, 20.0, size)
 
     
     model = YOLO(model_weights)
